@@ -15,7 +15,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.server.reactive.HttpHandler;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -58,6 +57,11 @@ public class EventController {
   @PostMapping
   public ResponseEntity<EventDTO> createEvent(@RequestBody EventInsertDTO dto) {
     return ResponseEntity.status(HttpStatus.CREATED).body(service.createEvent(dto));
+  }
+
+  @GetMapping("{eventId}")
+  public ResponseEntity<EventDTO> getEvent(@PathVariable Long eventId) {
+    return ResponseEntity.ok(service.getEvent(eventId));
   }
 
   @PutMapping("{eventId}")

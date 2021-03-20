@@ -65,6 +65,13 @@ public class EventService {
     return repository.findAll(spec, PageRequest.of(page, limit));
   }
 
+  public EventDTO getEvent(Long eventId) {
+    Event entity = repository.findById(eventId).orElseThrow(
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O evento com essa identificação não foi encontrado."));
+
+    return new EventDTO(entity);
+  }
+
   public EventDTO createEvent(EventInsertDTO dto) {
     Event entity = new Event(dto);
 
