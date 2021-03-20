@@ -7,7 +7,7 @@ O projeto foi gerado pelo [start.spring.io](https://start.spring.io/#!type=maven
 Há as seguintes rotas:
 
 - Get: /events
-  - Busca todos os eventos, você pode passar os Query Params como `page` e `limit` para fazer paginação, e Query Params como `name`, `place`, `description`, `emailContact` ou `startDate` para filtrar os resultados ou fazer uma pesquisa.
+  - Busca todos os eventos, você pode passar os Query Params como `page` e `limit` para fazer paginação e seus detalhes são retornados nos `Headers`, e Query Params como `name`, `place`, `description`, `emailContact` ou `startDate` para filtrar os resultados ou fazer uma pesquisa.
   - Exemplo: /events?page=0&limit=1&name=Vinicius
   - Exemplo: /events?page=0&limit=1&startDate=2021-03-20
   - Exemplo: /events?page=0&limit=1&place=Facens
