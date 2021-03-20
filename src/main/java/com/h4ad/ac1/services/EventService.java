@@ -3,6 +3,8 @@ package com.h4ad.ac1.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import com.h4ad.ac1.dto.EventDTO;
 import com.h4ad.ac1.dto.EventInsertDTO;
 import com.h4ad.ac1.dto.EventUpdateDTO;
@@ -10,6 +12,7 @@ import com.h4ad.ac1.entities.Event;
 import com.h4ad.ac1.repositories.EventRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -50,6 +53,14 @@ public class EventService {
     return new EventDTO(entity);
   }
 
+  public void deleteEvent(Long eventId) {
+    try {
+      repository.deleteById(eventId);
+    } catch (EmptyResultDataAccessException ex) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, "O evento com essa identificação não foi encontrado.");
+    }
+  }
+
   public List<EventDTO> toDTOList(List<Event> list) {
     List<EventDTO> listDTO = new ArrayList<>();
 
@@ -61,5 +72,4 @@ public class EventService {
 
     return listDTO;
   }
-
 }
