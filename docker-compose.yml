@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+  postgres:
+    image: postgres:12.4
+    environment:
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_USER: root
+      POSTGRES_DB: dev
+    ports:
+      - 5432:5432
+
+
