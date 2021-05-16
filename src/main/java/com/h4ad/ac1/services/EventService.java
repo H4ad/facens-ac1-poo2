@@ -75,6 +75,16 @@ public class EventService {
   public EventDTO createEvent(EventInsertDTO dto) {
     Event entity = new Event(dto);
 
+    if (entity.getStartDate().isAfter(entity.getEndDate()))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com uma data de início maior que a data final.");
+
+    if (entity.getStartTime().isAfter(entity.getEndTime()))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
+
+    // TODO: Adicionar campo de adminId para o Administrador do Evento
+    // TODO: Adicionar campo de local para o Evento
+    // TODO: Validar se o evento pode ser realizado nesse local e nesse horário
+
     entity = repository.save(entity);
 
     return new EventDTO(entity);
@@ -92,6 +102,19 @@ public class EventService {
     entity.setEndDate(dto.getEndDate());
     entity.setStartTime(dto.getStartTime());
     entity.setEndTime(dto.getEndTime());
+    entity.setAmountFreeTickets(dto.getAmountFreeTickets());
+    entity.setAmountPayedTickets(dto.getAmountPayedTickets());
+    entity.setPriceTicket(dto.getPriceTicket());
+
+    if (entity.getStartDate().isAfter(entity.getEndDate()))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com uma data de início maior que a data final.");
+
+    if (entity.getStartTime().isAfter(entity.getEndTime()))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
+
+    // TODO: Adicionar campo de adminId para o Administrador do Evento
+    // TODO: Adicionar campo de local para o Evento
+    // TODO: Validar se o evento pode ser realizado nesse local e nesse horário
 
     entity = repository.save(entity);
 

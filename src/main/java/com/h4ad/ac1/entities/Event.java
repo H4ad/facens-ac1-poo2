@@ -38,6 +38,16 @@ public class Event implements Serializable {
 
   private LocalTime endTime;
 
+  private Long amountFreeTickets;
+
+  private Long amountPayedTickets;
+
+  private Double priceTicket;
+
+  private Long freeTicketsSelled;
+  
+  private Long payedTicketsSelled;
+
   public Event() {
 
   }
@@ -51,6 +61,11 @@ public class Event implements Serializable {
     this.endDate = dto.getEndDate();
     this.startTime = dto.getStartTime();
     this.endTime = dto.getEndTime();
+    this.amountFreeTickets = dto.getAmountFreeTickets();
+    this.amountPayedTickets = dto.getAmountPayedTickets();
+    this.priceTicket = dto.getPriceTicket();
+    this.freeTicketsSelled = 0L;
+    this.payedTicketsSelled = 0L;
   }
 
   /**
@@ -152,4 +167,43 @@ public class Event implements Serializable {
     this.endTime = endTime;
   }
 
+  public Long getAmountFreeTickets() {
+    return amountFreeTickets;
+  }
+
+  public void setAmountFreeTickets(Long amountFreeTickets) {
+    this.amountFreeTickets = amountFreeTickets;
+  }
+
+  public Long getAmountPayedTickets() {
+    return amountPayedTickets;
+  }
+
+  public void setAmountPayedTickets(Long amountPayedTickets) {
+    this.amountPayedTickets = amountPayedTickets;
+  }
+
+  public Double getPriceTicket() {
+    return priceTicket;
+  }
+
+  public void setPriceTicket(Double priceTicket) {
+    this.priceTicket = priceTicket;
+  }
+
+  public Long getFreeTicketsSelled() {
+    return freeTicketsSelled;
+  }
+
+  public void setFreeTicketsSelled(Long freeTicketsSelled) {
+    this.freeTicketsSelled = freeTicketsSelled;
+  }
+
+  public Long getPayedTicketsSelled() {
+    return payedTicketsSelled;
+  }
+
+  public void setPayedTicketsSelled(Long payedTicketsSelled) {
+    this.payedTicketsSelled = payedTicketsSelled;
+  }
 }

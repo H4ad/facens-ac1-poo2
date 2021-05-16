@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class EventInsertDTO {
-  
+
   private String name;
 
   private String description;
@@ -20,6 +20,12 @@ public class EventInsertDTO {
   private LocalTime startTime;
 
   private LocalTime endTime;
+
+  private Long amountFreeTickets;
+
+  private Long amountPayedTickets;
+
+  private Double priceTicket;
 
   public String getName() {
     return name;
@@ -83,5 +89,29 @@ public class EventInsertDTO {
 
   public void setEndTime(LocalTime endTime) {
     this.endTime = endTime;
+  }
+
+  public Long getAmountFreeTickets() {
+    return amountFreeTickets;
+  }
+
+  public void setAmountFreeTickets(Long amountFreeTickets) {
+    this.amountFreeTickets = amountFreeTickets;
+  }
+
+  public Long getAmountPayedTickets() {
+    return amountPayedTickets;
+  }
+
+  public void setAmountPayedTickets(Long amountPayedTickets) {
+    this.amountPayedTickets = amountPayedTickets;
+  }
+
+  public Double getPriceTicket() {
+    return priceTicket;
+  }
+
+  public void setPriceTicket(Double priceTicket) {
+    this.priceTicket = priceTicket;
   }
 }
