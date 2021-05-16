@@ -82,8 +82,6 @@ public class EventService {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
 
     // TODO: Adicionar campo de adminId para o Administrador do Evento
-    // TODO: Adicionar campo de local para o Evento
-    // TODO: Validar se o evento pode ser realizado nesse local e nesse horário
 
     entity = repository.save(entity);
 
@@ -96,7 +94,6 @@ public class EventService {
 
     entity.setName(dto.getName());
     entity.setDescription(dto.getDescription());
-    entity.setPlace(dto.getPlace());
     entity.setEmailContact(dto.getEmailContact());
     entity.setStartDate(dto.getStartDate());
     entity.setEndDate(dto.getEndDate());
@@ -113,8 +110,6 @@ public class EventService {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
 
     // TODO: Adicionar campo de adminId para o Administrador do Evento
-    // TODO: Adicionar campo de local para o Evento
-    // TODO: Validar se o evento pode ser realizado nesse local e nesse horário
 
     entity = repository.save(entity);
 
@@ -133,7 +128,7 @@ public class EventService {
     List<EventDTO> listDTO = new ArrayList<>();
 
     for (Event event : list) {
-      EventDTO dto = new EventDTO(event);
+      EventDTO dto = new EventDTO(event, true);
 
       listDTO.add(dto);
     }

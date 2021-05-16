@@ -6,7 +6,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -31,8 +33,6 @@ public class Event implements Serializable {
 
   private String description;
 
-  private String place;
-
   private String emailContact;
 
   private LocalDate startDate;
@@ -50,7 +50,7 @@ public class Event implements Serializable {
   private Double priceTicket;
 
   private Long freeTicketsSelled;
-  
+
   private Long payedTicketsSelled;
 
   @ManyToMany()
@@ -65,7 +65,6 @@ public class Event implements Serializable {
   public Event(EventInsertDTO dto) {
     this.name = dto.getName();
     this.description = dto.getDescription();
-    this.place = dto.getPlace();
     this.emailContact = dto.getEmailContact();
     this.startDate = dto.getStartDate();
     this.endDate = dto.getEndDate();
@@ -127,14 +126,6 @@ public class Event implements Serializable {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public String getPlace() {
-    return place;
-  }
-
-  public void setPlace(String place) {
-    this.place = place;
   }
 
   public String getEmailContact() {
@@ -215,5 +206,78 @@ public class Event implements Serializable {
 
   public void setPayedTicketsSelled(Long payedTicketsSelled) {
     this.payedTicketsSelled = payedTicketsSelled;
+  }
+
+  public List<Place> getPlaces() {
+    return places;
+  }
+
+  public void setPlaces(List<Place> places) {
+    this.places = places;
+  }
+
+  public boolean intersectsDateWith(Event event) {
+    // Caso a data de início ou fim de ambos sejam iguais, deve se considerar o
+    // horário
+    // Ex: 2020-12-11->2020-12-12 10:00->12:00 e outro em 2020-12-12->2020-12-12
+    // 14:00->19:00
+    if (startDate.isEqual(event.startDate) || endDate.isEqual(event.endDate) || startDate.isEqual(event.endDate) || endDate.isEqual(event.startDate)) {
+      return this.intersectsTimeWith(event);
+    }
+
+    // Se a data de início do evento1 está entre a data de início e fim do evento2;
+    // startDate BETWEEN startDate AND endDate
+    if (startDate.isAfter(event.startDate) && startDate.isBefore(event.endDate)) {
+      return this.intersectsTimeWith(event);
+    }
+
+    // Se a data de fim do evento1 está entre a data de início e fim do evento2;
+    // endDate BETWEEN startDate AND endDate
+    if (endDate.isAfter(event.startDate) && endDate.isBefore(event.endDate)) {
+      return this.intersectsTimeWith(event);
+    }
+
+    // Se a data de início do evento2 está entre a data de início e fim do evento1;
+    // startDate BETWEEN startDate AND endDate
+    if (event.startDate.isAfter(startDate) && event.startDate.isBefore(endDate)) {
+      return this.intersectsTimeWith(event);
+    }
+
+    // Se a data de fim do evento2 está entre a data de início e fim do evento1;
+    // endDate BETWEEN startDate AND endDate
+    if (event.endDate.isAfter(startDate) && event.endDate.isBefore(endDate)) {
+      return this.intersectsTimeWith(event);
+    }
+
+    return false;
+  }
+
+  public boolean intersectsTimeWith(Event event) {
+    // Se a hora de início e fim seja igual a hora de inicio e fim do evento2;
+    // startTime = startTime AND endTime = endTime
+    if (startTime.equals(event.startTime) && endTime.equals(event.endTime))
+      return true;
+
+    // Se a hora de início do evento1 está entre a hora de início e fim do evento2;
+    // startTime BETWEEN startTime AND endTime
+    if (startTime.isAfter(event.startTime) && startTime.isBefore(event.endTime))
+      return true;
+
+    // Se a hora de fim do evento 1 está entre a hora de início e fim do evento 2;
+    // endTime BETWEEN startTime AND endTime
+    if (endTime.isAfter(event.startTime) && endTime.isBefore(event.endTime))
+      return true;
+
+    // Se a hora de início do evento2 está entre a hora de início e fim do evento1;
+    // startTime BETWEEN startTime AND endTime
+    if (event.startTime.isAfter(startTime) && event.startTime.isBefore(endTime))
+      return true;
+
+    // Se a hora de fim do evento2 está entre a hora de início e fim do evento1;
+    // endTime BETWEEN startTime AND endTime
+    if (event.endTime.isAfter(startTime) && event.endTime.isBefore(endTime))
+      return true;
+
+    return false;
   }
 }

@@ -2,6 +2,8 @@ package com.h4ad.ac1.dto;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.h4ad.ac1.entities.Event;
@@ -16,7 +18,6 @@ public class EventDTO {
     setId(event.getId());
     setName(event.getName());
     setDescription(event.getDescription());
-    setPlace(event.getPlace());
     setEmailContact(event.getEmailContact());
     setStartDate(event.getStartDate());
     setEndDate(event.getEndDate());
@@ -29,13 +30,18 @@ public class EventDTO {
     setPayedTicketsSelled(event.getPayedTicketsSelled());
   }
 
+  public EventDTO(Event event, boolean shouldIncludeJoins) {
+    this(event);
+
+    if (shouldIncludeJoins)
+      setPlaces(event.getPlaces().stream().map(entity -> new PlaceDTO(entity, false)).collect(Collectors.toList()));
+  }
+
   private Long id;
 
   private String name;
 
   private String description;
-
-  private String place;
 
   private String emailContact;
 
@@ -59,6 +65,8 @@ public class EventDTO {
   
   private Long payedTicketsSelled;
 
+  private List<PlaceDTO> places;
+
   public Long getId() {
     return id;
   }
@@ -81,14 +89,6 @@ public class EventDTO {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public String getPlace() {
-    return place;
-  }
-
-  public void setPlace(String place) {
-    this.place = place;
   }
 
   public String getEmailContact() {
@@ -169,5 +169,13 @@ public class EventDTO {
 
   public void setPayedTicketsSelled(Long payedTicketsSelled) {
     this.payedTicketsSelled = payedTicketsSelled;
+  }
+
+  public List<PlaceDTO> getPlaces() {
+    return places;
+  }
+
+  public void setPlaces(List<PlaceDTO> places) {
+    this.places = places;
   }
 }

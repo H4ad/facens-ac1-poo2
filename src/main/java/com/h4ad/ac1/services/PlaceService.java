@@ -70,7 +70,7 @@ public class PlaceService {
     List<PlaceDTO> listDTO = new ArrayList<>();
 
     for (Place Place : list) {
-      PlaceDTO dto = new PlaceDTO(Place);
+      PlaceDTO dto = new PlaceDTO(Place, true);
 
       listDTO.add(dto);
     }

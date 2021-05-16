@@ -9,8 +9,6 @@ public class EventUpdateDTO {
 
   private String description;
 
-  private String place;
-
   private String emailContact;
 
   private LocalDate startDate;
@@ -41,14 +39,6 @@ public class EventUpdateDTO {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public String getPlace() {
-    return place;
-  }
-
-  public void setPlace(String place) {
-    this.place = place;
   }
 
   public String getEmailContact() {
