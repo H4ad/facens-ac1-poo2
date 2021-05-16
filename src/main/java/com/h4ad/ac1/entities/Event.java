@@ -3,11 +3,16 @@ package com.h4ad.ac1.entities;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import com.h4ad.ac1.dto.EventInsertDTO;
@@ -47,6 +52,11 @@ public class Event implements Serializable {
   private Long freeTicketsSelled;
   
   private Long payedTicketsSelled;
+
+  @ManyToMany()
+  @JoinTable(name = "TB_PLACES_EVENTS", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
+      @JoinColumn(name = "place_id") })
+  private List<Place> places = new ArrayList<>();
 
   public Event() {
 
