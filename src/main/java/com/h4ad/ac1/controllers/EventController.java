@@ -41,7 +41,7 @@ public class EventController {
       @RequestParam(name = "description", required = false) Optional<String> description,
       @RequestParam(name = "emailContact", required = false) Optional<String> emailContact,
       @RequestParam(name = "startDate", required = false) Optional<String> startDate) {
-    Page<Event> pageable = service.getEvents(page, limit, name, place, description, emailContact, Optional.of(startDate.isEmpty() ? null : LocalDate.parse(startDate.get())));
+    Page<Event> pageable = service.getEvents(page, limit, name, place, description, emailContact, Optional.ofNullable(startDate.isEmpty() ? null : LocalDate.parse(startDate.get())));
 
     HttpHeaders headers = new HttpHeaders();
 
