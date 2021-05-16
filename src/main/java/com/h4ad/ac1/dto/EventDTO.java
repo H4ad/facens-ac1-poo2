@@ -35,6 +35,9 @@ public class EventDTO {
 
     if (shouldIncludeJoins)
       setPlaces(event.getPlaces().stream().map(entity -> new PlaceDTO(entity, false)).collect(Collectors.toList()));
+
+    if (shouldIncludeJoins && event.getAdmin() != null)
+      setAdmin(new AdminDTO(event.getAdmin(), false));
   }
 
   private Long id;
@@ -66,6 +69,8 @@ public class EventDTO {
   private Long payedTicketsSelled;
 
   private List<PlaceDTO> places;
+
+  private AdminDTO admin;
 
   public Long getId() {
     return id;
@@ -177,5 +182,13 @@ public class EventDTO {
 
   public void setPlaces(List<PlaceDTO> places) {
     this.places = places;
+  }
+
+  public AdminDTO getAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(AdminDTO admin) {
+    this.admin = admin;
   }
 }

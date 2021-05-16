@@ -39,6 +39,13 @@ public class AdminService {
     return new AdminDTO(entity);
   }
 
+  public Admin getAdminEntity(Long adminId) {
+    Admin entity = repository.findById(adminId).orElseThrow(
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Administrador com essa identificação não foi encontrado."));
+    
+    return entity;
+  }
+
   public AdminDTO createAdmin(AdminInsertDTO dto) {
     Admin adminWithThatEmail = repository.findByEmail(dto.getEmail());
 
@@ -82,7 +89,7 @@ public class AdminService {
     List<AdminDTO> listDTO = new ArrayList<>();
 
     for (Admin Admin : list) {
-      AdminDTO dto = new AdminDTO(Admin);
+      AdminDTO dto = new AdminDTO(Admin, true);
 
       listDTO.add(dto);
     }

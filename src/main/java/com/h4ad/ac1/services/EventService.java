@@ -8,6 +8,7 @@ import java.util.Optional;
 import com.h4ad.ac1.dto.EventDTO;
 import com.h4ad.ac1.dto.EventInsertDTO;
 import com.h4ad.ac1.dto.EventUpdateDTO;
+import com.h4ad.ac1.entities.Admin;
 import com.h4ad.ac1.entities.Event;
 import com.h4ad.ac1.repositories.EventRepository;
 import com.h4ad.ac1.specifications.EventSearchCriteria;
@@ -17,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -27,6 +29,9 @@ public class EventService {
 
   @Autowired
   private EventRepository repository;
+
+  @Autowired
+  private AdminService adminService;
 
   public Page<Event> getEvents(
     Optional<String> pageString, 
@@ -62,7 +67,7 @@ public class EventService {
       spec = EventSpecification.add(spec, new EventSearchCriteria("startDate", ":", startDate.get()));
     }
 
-    return repository.findAll(spec, PageRequest.of(page, limit));
+    return repository.findAll(spec, PageRequest.of(page, limit, Sort.by("id")));
   }
 
   public EventDTO getEvent(Long eventId) {
@@ -81,8 +86,9 @@ public class EventService {
     if (entity.getStartTime().isAfter(entity.getEndTime()))
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
 
-    // TODO: Adicionar campo de adminId para o Administrador do Evento
+    Admin admin = adminService.getAdminEntity(dto.getAdminId());
 
+    entity.setAdmin(admin);
     entity = repository.save(entity);
 
     return new EventDTO(entity);
@@ -109,8 +115,9 @@ public class EventService {
     if (entity.getStartTime().isAfter(entity.getEndTime()))
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser cadastrado com o horário de início maior que o horário final.");
 
-    // TODO: Adicionar campo de adminId para o Administrador do Evento
+    Admin admin = adminService.getAdminEntity(dto.getAdminId());
 
+    entity.setAdmin(admin);
     entity = repository.save(entity);
 
     return new EventDTO(entity);

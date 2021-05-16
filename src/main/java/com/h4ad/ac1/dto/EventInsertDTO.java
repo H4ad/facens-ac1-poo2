@@ -27,6 +27,8 @@ public class EventInsertDTO {
 
   private Double priceTicket;
 
+  private Long adminId;
+
   public String getName() {
     return name;
   }
@@ -113,5 +115,13 @@ public class EventInsertDTO {
 
   public void setPriceTicket(Double priceTicket) {
     this.priceTicket = priceTicket;
+  }
+
+  public Long getAdminId() {
+    return adminId;
+  }
+
+  public void setAdminId(Long adminId) {
+    this.adminId = adminId;
   }
 }

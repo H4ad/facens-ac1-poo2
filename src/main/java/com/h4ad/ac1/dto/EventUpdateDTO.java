@@ -25,6 +25,8 @@ public class EventUpdateDTO {
 
   private Double priceTicket;
 
+  private Long adminId;
+
   public String getName() {
     return name;
   }
@@ -103,5 +105,13 @@ public class EventUpdateDTO {
 
   public void setPriceTicket(Double priceTicket) {
     this.priceTicket = priceTicket;
+  }
+
+  public Long getAdminId() {
+    return adminId;
+  }
+
+  public void setAdminId(Long adminId) {
+    this.adminId = adminId;
   }
 }

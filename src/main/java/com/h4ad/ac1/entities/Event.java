@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.h4ad.ac1.dto.EventInsertDTO;
@@ -52,6 +53,9 @@ public class Event implements Serializable {
   private Long freeTicketsSelled;
 
   private Long payedTicketsSelled;
+
+  @ManyToOne(fetch = FetchType.EAGER)
+  private Admin admin;
 
   @ManyToMany()
   @JoinTable(name = "TB_PLACES_EVENTS", joinColumns = { @JoinColumn(name = "event_id") }, inverseJoinColumns = {
@@ -214,6 +218,14 @@ public class Event implements Serializable {
 
   public void setPlaces(List<Place> places) {
     this.places = places;
+  }
+
+  public Admin getAdmin() {
+    return admin;
+  }
+
+  public void setAdmin(Admin admin) {
+    this.admin = admin;
   }
 
   public boolean intersectsDateWith(Event event) {
