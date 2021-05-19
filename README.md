@@ -22,27 +22,27 @@ Há as seguintes rotas:
   - Exemplo: /events?page=0&limit=1&place=Facens
   - Exemplo: /events?page=0&limit=1&name=Vinicius&place=Facens
   <br>
- ![image](https://user-images.githubusercontent.com/41178325/118742133-28efbc00-b826-11eb-9ba9-f3f955df9275.png)
+![image](https://user-images.githubusercontent.com/41178325/118742133-28efbc00-b826-11eb-9ba9-f3f955df9275.png)
 
 - Post: /events
   - Cria um novo evento passando as seguintes propriedades: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
   <br>
-  ![image](https://user-images.githubusercontent.com/41178325/118742106-1c6b6380-b826-11eb-9281-8fe2b00de8b3.png)
+![image](https://user-images.githubusercontent.com/41178325/118742106-1c6b6380-b826-11eb-9281-8fe2b00de8b3.png)
 
 - Get: /events/{eventId}
   - Busca um evento pelo seu ID.
   <br>
-  ![image](https://user-images.githubusercontent.com/41178325/118742153-360cab00-b826-11eb-9d82-5b27e64983f0.png)
+![image](https://user-images.githubusercontent.com/41178325/118742153-360cab00-b826-11eb-9d82-5b27e64983f0.png)
 
 - Put: /events/{eventId}
   - Atualiza um evento pelo seu ID, e você pode atualizar os seguintes campos: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
   <br>
-  ![image](https://user-images.githubusercontent.com/41178325/118742175-43299a00-b826-11eb-8e23-6761dc55fa7d.png)
+![image](https://user-images.githubusercontent.com/41178325/118742175-43299a00-b826-11eb-8e23-6761dc55fa7d.png)
 
 - Delete: /events/{eventId}
   - Remove um evento pelo seu ID.
   <br>
-  ![image](https://user-images.githubusercontent.com/41178325/118742190-4c1a6b80-b826-11eb-8054-a6f7e4ea9deb.png)
+![image](https://user-images.githubusercontent.com/41178325/118742190-4c1a6b80-b826-11eb-8054-a6f7e4ea9deb.png)
 
 
 ## Desenvolvedor
