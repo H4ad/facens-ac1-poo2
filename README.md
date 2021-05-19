@@ -22,7 +22,7 @@ Há as seguintes rotas:
   - Exemplo: /events?page=0&limit=1&place=Facens
   - Exemplo: /events?page=0&limit=1&name=Vinicius&place=Facens
   <br>
-  ![image](https://user-images.githubusercontent.com/41178325/118742133-28efbc00-b826-11eb-9ba9-f3f955df9275.png)
+ ![image](https://user-images.githubusercontent.com/41178325/118742133-28efbc00-b826-11eb-9ba9-f3f955df9275.png)
 
 - Post: /events
   - Cria um novo evento passando as seguintes propriedades: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
