@@ -28,3 +28,4 @@ Há as seguintes rotas:
 ## Desenvolvedor
 
 Vinícius Lourenço Claro Cardoso - 180618
+Marcelo Zaguette Junior - 180998
