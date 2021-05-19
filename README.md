@@ -27,7 +27,20 @@ Há as seguintes rotas:
 - Post: /events
   - Cria um novo evento passando as seguintes propriedades: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
   <br>
-![image](https://user-images.githubusercontent.com/41178325/118742106-1c6b6380-b826-11eb-9281-8fe2b00de8b3.png)
+{
+	"name": "Evento do Joga18",
+	"description": "Será um evento legal",
+	"place": "Facens",
+	"emailContact": "vinicius.cardoso@facens.br",
+	"startDate": "2021-03-21",
+	"endDate": "2021-03-28",
+	"startTime": "16:30:00",
+	"endTime": "19:00:00",
+	"amountFreeTickets": 10,
+	"amountPayedTickets": 90,
+	"priceTicket": 60.99,
+	"adminId": 4
+}
 
 - Get: /events/{eventId}
   - Busca um evento pelo seu ID.
@@ -36,8 +49,21 @@ Há as seguintes rotas:
 
 - Put: /events/{eventId}
   - Atualiza um evento pelo seu ID, e você pode atualizar os seguintes campos: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
-  <br>
-![image](https://user-images.githubusercontent.com/41178325/118742175-43299a00-b826-11eb-8e23-6761dc55fa7d.png)
+  <br> 
+ {
+	"name": "Evento do Joga11",
+	"description": "Será um evento legal para caramba.",
+	"place": "Facens - LIGA",
+	"emailContact": "vinicius.cardoso23@etec.sp.gov.br",
+	"startDate": "2021-03-20",
+	"endDate": "2021-03-22",
+	"startTime": "13:00:00",
+	"endTime": "15:00:00",
+	"amountFreeTickets": 5,
+	"amountPayedTickets": 95,
+	"priceTicket": 99.99,
+	"adminId": 2
+}
 
 - Delete: /events/{eventId}
   - Remove um evento pelo seu ID.
