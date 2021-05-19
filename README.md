@@ -27,6 +27,7 @@ Há as seguintes rotas:
 - Post: /events
   - Cria um novo evento passando as seguintes propriedades: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
   <br>
+ ```json
 {
 	"name": "Evento do Joga18",
 	"description": "Será um evento legal",
@@ -41,7 +42,7 @@ Há as seguintes rotas:
 	"priceTicket": 60.99,
 	"adminId": 4
 }
-
+```
 - Get: /events/{eventId}
   - Busca um evento pelo seu ID.
   <br>
@@ -50,6 +51,7 @@ Há as seguintes rotas:
 - Put: /events/{eventId}
   - Atualiza um evento pelo seu ID, e você pode atualizar os seguintes campos: `name`, `place`, `description`, `emailContact`, `startDate`, `endDate`, `startTime`, `endTime`, `emailContact`.
   <br> 
+ ```json
  {
 	"name": "Evento do Joga11",
 	"description": "Será um evento legal para caramba.",
@@ -64,7 +66,7 @@ Há as seguintes rotas:
 	"priceTicket": 99.99,
 	"adminId": 2
 }
-
+```
 - Delete: /events/{eventId}
   - Remove um evento pelo seu ID.
   <br>
