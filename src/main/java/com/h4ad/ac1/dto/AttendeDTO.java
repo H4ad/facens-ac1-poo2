@@ -1,8 +1,5 @@
 package com.h4ad.ac1.dto;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.h4ad.ac1.entities.Attende;
 
 public class AttendeDTO {
@@ -13,25 +10,20 @@ public class AttendeDTO {
 
   private String email;
 
-  private String phoneNumber;
-
-  private List<EventDTO> events;
+  private double balance;
 
   public AttendeDTO(Attende entity) {
     setId(entity.getId());
     setName(entity.getName());
     setEmail(entity.getEmail());
-    setPhoneNumber(entity.getPhoneNumber());
+    setBalance(entity.getBalance());
   }
 
   public AttendeDTO(Attende entity, boolean shouldIncludeJoins) {
     setId(entity.getId());
     setName(entity.getName());
     setEmail(entity.getEmail());
-    setPhoneNumber(entity.getPhoneNumber());
-
-    if (shouldIncludeJoins)
-      setEvents(entity.getEvents().stream().map(event -> new EventDTO(event, false)).collect(Collectors.toList()));
+    setBalance(entity.getBalance());
   }
 
   public Long getId() {
@@ -58,19 +50,11 @@ public class AttendeDTO {
     this.email = email;
   }
 
-  public String getPhoneNumber() {
-    return phoneNumber;
+  public double getBalance() {
+    return balance;
   }
 
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
-  }
-
-  public List<EventDTO> getEvents() {
-    return events;
-  }
-
-  public void setEvents(List<EventDTO> events) {
-    this.events = events;
+  public void setBalance(double balance) {
+    this.balance = balance;
   }
 }

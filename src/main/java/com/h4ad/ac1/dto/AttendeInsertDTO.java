@@ -6,8 +6,6 @@ public class AttendeInsertDTO {
 
   private String email;
 
-  private String phoneNumber;
-
   public String getName() {
     return name;
   }
@@ -22,13 +20,5 @@ public class AttendeInsertDTO {
 
   public void setEmail(String email) {
     this.email = email;
-  }
-
-  public String getPhoneNumber() {
-    return phoneNumber;
-  }
-
-  public void setPhoneNumber(String phoneNumber) {
-    this.phoneNumber = phoneNumber;
   }
 }

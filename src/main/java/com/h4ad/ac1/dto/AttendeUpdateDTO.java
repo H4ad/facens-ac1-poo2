@@ -1,12 +1,10 @@
 package com.h4ad.ac1.dto;
 
 public class AttendeUpdateDTO {
-  
+
     private String name;
 
     private String email;
-
-    private String phoneNumber;
 
     public String getName() {
         return name;
@@ -22,13 +20,5 @@ public class AttendeUpdateDTO {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
     }
 }
