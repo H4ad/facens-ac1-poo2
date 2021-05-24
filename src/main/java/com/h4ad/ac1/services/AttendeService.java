@@ -33,7 +33,7 @@ public class AttendeService {
 
   public AttendeDTO getAttendees(Long attendeId) {
     Attende entity = repository.findById(attendeId).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Administrador com essa identificação não foi encontrado."));
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Convidado com essa identificação não foi encontrado."));
     
     return new AttendeDTO(entity);
   }
