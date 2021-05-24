@@ -1,6 +1,6 @@
 _type: export
 __export_format: 4
-__export_date: 2021-05-24T00:13:31.204Z
+__export_date: 2021-05-24T00:49:20.991Z
 __export_source: insomnia.desktop.app:v2021.3.0
 resources:
   - _id: req_30484228c1a34cc89ad5d25ad01d274c
@@ -136,7 +136,7 @@ resources:
     _type: request
   - _id: req_16182f4e59bf40438981c21a2f9bf8f2
     parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
-    modified: 1621815083487
+    modified: 1621817175639
     created: 1616257984176
     url: "{{ _.base_url }}/events"
     name: List Events
@@ -148,12 +148,12 @@ resources:
         value: "0"
         description: ""
         id: pair_9b20802ddd6340f0aea98c5c92de6191
-        disabled: false
+        disabled: true
       - name: limit
         value: "5"
         description: ""
         id: pair_4a3becb0841b4b97b8194c4a3df8fa3c
-        disabled: false
+        disabled: true
       - name: name
         value: Joga18
         description: ""
@@ -422,7 +422,7 @@ resources:
     _type: request_group
   - _id: req_3773637f8a774d88a24a6c72fd4e9889
     parentId: fld_7941e485e47b4fdd875175a68f0a043a
-    modified: 1621194915488
+    modified: 1621817163103
     created: 1621194858783
     url: "{{ _.base_url }}/admins"
     name: Create Admin
@@ -433,7 +433,7 @@ resources:
       text: |-
         {
         	"name": "Vinícius Lourenço",
-        	"email": "vinicius.cardoso@facens.br",
+        	"email": "vinicius.cardoso2@facens.br",
         	"phoneNumber": "15988116120"
         }
     parameters: []
@@ -536,7 +536,7 @@ resources:
     _type: request
   - _id: req_106a73d8291d4c2293a1d5bcfa6fa490
     parentId: fld_1c752b57b75b493b8b49dd124d819a84
-    modified: 1621814108426
+    modified: 1621817341381
     created: 1621812850479
     url: "{{ _.base_url }}/attendees/1"
     name: Delete Attendee
@@ -567,7 +567,7 @@ resources:
     _type: request_group
   - _id: req_de4692d368b14bdf9fcf76146259ac4f
     parentId: fld_1c752b57b75b493b8b49dd124d819a84
-    modified: 1621814112406
+    modified: 1621817300471
     created: 1621812850475
     url: "{{ _.base_url }}/attendees"
     name: Create Attendee
@@ -578,7 +578,7 @@ resources:
       text: |-
         {
         	"name": "Vinícius Lourenço",
-        	"email": "vinicius.cardoso@facens.br",
+        	"email": "vinicius.cardoso4@facens.br",
         	"phoneNumber": "15988116120"
         }
     parameters: []
@@ -598,9 +598,9 @@ resources:
     _type: request
   - _id: req_f68b115bf40c420b91df8e2a205978c1
     parentId: fld_1c752b57b75b493b8b49dd124d819a84
-    modified: 1621813307168
+    modified: 1621817190117
     created: 1621812850471
-    url: "{{ _.base_url }}/attendes"
+    url: "{{ _.base_url }}/attendees"
     name: List Attendes
     description: ""
     method: GET
@@ -629,10 +629,10 @@ resources:
     _type: request
   - _id: req_858536e8a5f64109839e853c6c54371d
     parentId: fld_1c752b57b75b493b8b49dd124d819a84
-    modified: 1621812850477
+    modified: 1621817323547
     created: 1621812850477
-    url: "{{ _.base_url }}/admins/1"
-    name: Update Admin
+    url: "{{ _.base_url }}/attendees/2"
+    name: Update Attendee
     description: ""
     method: PUT
     body:
@@ -640,8 +640,7 @@ resources:
       text: |-
         {
         	"name": "Vinícius Lourenço Claro Cardoso",
-        	"email": "vinicius.cardoso23@etec.sp.gov.br",
-        	"phoneNumber": "15988116144"
+        	"email": "vinicius.cardoso223@etec.sp.gov.br"
         }
     parameters: []
     headers:
@@ -660,10 +659,10 @@ resources:
     _type: request
   - _id: req_a3aacc81c47b4bc5adb65d1af7639962
     parentId: fld_1c752b57b75b493b8b49dd124d819a84
-    modified: 1621812850482
+    modified: 1621817331488
     created: 1621812850482
-    url: "{{ _.base_url }}/admins/1"
-    name: Get Admin
+    url: "{{ _.base_url }}/attendees/2"
+    name: Get Attendee
     description: ""
     method: GET
     body: {}
