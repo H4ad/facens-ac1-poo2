@@ -1,0 +1,738 @@
+_type: export
+__export_format: 4
+__export_date: 2021-05-24T00:13:31.204Z
+__export_source: insomnia.desktop.app:v2021.3.0
+resources:
+  - _id: req_30484228c1a34cc89ad5d25ad01d274c
+    parentId: fld_513882807de046e5b0977a5a84e4c241
+    modified: 1621186922718
+    created: 1621182319293
+    url: "{{ _.base_url }}/events/1/places/1"
+    name: Remove Place To Event
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1621182298849
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_513882807de046e5b0977a5a84e4c241
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1621186395499
+    created: 1621186395499
+    name: Events and Places
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1621186395499
+    _type: request_group
+  - _id: wrk_eeddbdace318477bb5140b3b793cc536
+    parentId: null
+    modified: 1616257980550
+    created: 1616257980550
+    name: POO2 - AC1
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_8fa3239f0068495b9917c09bb6db2e24
+    parentId: fld_513882807de046e5b0977a5a84e4c241
+    modified: 1621812731786
+    created: 1621182298799
+    url: "{{ _.base_url }}/events/1/places/1"
+    name: Add Place To Event
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1621182298799
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f1905ad652834b5d8a42ba72b47d2a67
+    parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
+    modified: 1621812720227
+    created: 1616259781822
+    url: "{{ _.base_url }}/events/1"
+    name: Delete Event
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618884
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_edeeeb0e30f14def893ba06fff26e0e3
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1621180803435
+    created: 1621180803435
+    name: Events
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1621180803435
+    _type: request_group
+  - _id: req_35f88efd2df3449b9ffd207cf516247d
+    parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
+    modified: 1621195992427
+    created: 1616258610607
+    url: "{{ _.base_url }}/events"
+    name: Create Event
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Evento do Joga18",
+        	"description": "Será um evento legal",
+        	"place": "Facens",
+        	"emailContact": "vinicius.cardoso@facens.br",
+        	"startDate": "2021-03-21",
+        	"endDate": "2021-03-28",
+        	"startTime": "16:30:00",
+        	"endTime": "19:00:00",
+        	"amountFreeTickets": 10,
+        	"amountPayedTickets": 90,
+        	"priceTicket": 60.99,
+        	"adminId": 1
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618871.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_16182f4e59bf40438981c21a2f9bf8f2
+    parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
+    modified: 1621815083487
+    created: 1616257984176
+    url: "{{ _.base_url }}/events"
+    name: List Events
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        value: "0"
+        description: ""
+        id: pair_9b20802ddd6340f0aea98c5c92de6191
+        disabled: false
+      - name: limit
+        value: "5"
+        description: ""
+        id: pair_4a3becb0841b4b97b8194c4a3df8fa3c
+        disabled: false
+      - name: name
+        value: Joga18
+        description: ""
+        id: pair_a2f52b98946a45438fd984e1c0cc2a47
+        disabled: true
+      - name: description
+        value: ggg
+        description: ""
+        id: pair_bf244b08cd6c4a2a9c369451a550e86e
+        disabled: true
+      - name: emailContact
+        value: vinicius.cardoso@facens.br
+        description: ""
+        id: pair_603eb4bb621a4835b3452a49ccb27486
+        disabled: true
+      - name: startDate
+        value: 2021-03-20
+        description: ""
+        id: pair_bea74f8d2e8f405a894315b68efbcd74
+        disabled: true
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618865.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_64792c4c8b2d4e5baca9d00374fe8ba6
+    parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
+    modified: 1621196301854
+    created: 1616259442491
+    url: "{{ _.base_url }}/events/1"
+    name: Update Event
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Evento do Joga11",
+        	"description": "Será um evento legal para caramba.",
+        	"place": "Facens - LIGA",
+        	"emailContact": "vinicius.cardoso23@etec.sp.gov.br",
+        	"startDate": "2021-03-20",
+        	"endDate": "2021-03-22",
+        	"startTime": "13:00:00",
+        	"endTime": "15:00:00",
+        	"amountFreeTickets": 5,
+        	"amountPayedTickets": 95,
+        	"priceTicket": 99.99,
+        	"adminId": 2
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_073f8080eed648f292664557f0a5d2f8
+    parentId: fld_edeeeb0e30f14def893ba06fff26e0e3
+    modified: 1621195119262
+    created: 1616272618834
+    url: "{{ _.base_url }}/events/1"
+    name: Get Event
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618834
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_bf909306a0cb4b729f439fe009275c61
+    parentId: fld_53eb309272fb48d798464c9b44eccfc9
+    modified: 1621180823919
+    created: 1621180812572
+    url: "{{ _.base_url }}/places/1"
+    name: Delete Place
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618884
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_53eb309272fb48d798464c9b44eccfc9
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1621180812559
+    created: 1621180812559
+    name: Places
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619775048850
+    _type: request_group
+  - _id: req_fd39ae07b87d443ab095b502fdf3b1c3
+    parentId: fld_53eb309272fb48d798464c9b44eccfc9
+    modified: 1621180853683
+    created: 1621180812566
+    url: "{{ _.base_url }}/places"
+    name: Create Place
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Casa do Joga10",
+        	"address": "Rua Monsenhor Benedito Mário Calazans"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618871.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_0e13eba3465b49c5a6e366878daf0074
+    parentId: fld_53eb309272fb48d798464c9b44eccfc9
+    modified: 1621186187561
+    created: 1621180812562
+    url: "{{ _.base_url }}/places"
+    name: List Places
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        value: "0"
+        description: ""
+        id: pair_9b20802ddd6340f0aea98c5c92de6191
+        disabled: false
+      - name: limit
+        value: "5"
+        description: ""
+        id: pair_4a3becb0841b4b97b8194c4a3df8fa3c
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618865.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_893a7e13bc994f749901dcb99e490cb7
+    parentId: fld_53eb309272fb48d798464c9b44eccfc9
+    modified: 1621180880339
+    created: 1621180812569
+    url: "{{ _.base_url }}/places/1"
+    name: Update Place
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Casa do Babu",
+        	"address": "Rua Monsenhor Benedito Mário Calazans, 102"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e465d0a147434eb6aa373435bc3df943
+    parentId: fld_53eb309272fb48d798464c9b44eccfc9
+    modified: 1621195113224
+    created: 1621180812575
+    url: "{{ _.base_url }}/events/1"
+    name: Get Place
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618834
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_ee8bb76a203c489a92ce0a316b5af8d5
+    parentId: fld_7941e485e47b4fdd875175a68f0a043a
+    modified: 1621194866906
+    created: 1621194858792
+    url: "{{ _.base_url }}/admins/1"
+    name: Delete Admin
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618884
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_7941e485e47b4fdd875175a68f0a043a
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1621194858763
+    created: 1621194858763
+    name: Admins
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1619072171557.5
+    _type: request_group
+  - _id: req_3773637f8a774d88a24a6c72fd4e9889
+    parentId: fld_7941e485e47b4fdd875175a68f0a043a
+    modified: 1621194915488
+    created: 1621194858783
+    url: "{{ _.base_url }}/admins"
+    name: Create Admin
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Vinícius Lourenço",
+        	"email": "vinicius.cardoso@facens.br",
+        	"phoneNumber": "15988116120"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618871.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a48d2ce4883843aba8847c4a6e55d38b
+    parentId: fld_7941e485e47b4fdd875175a68f0a043a
+    modified: 1621195141320
+    created: 1621194858773
+    url: "{{ _.base_url }}/admins"
+    name: List Admins
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        value: "0"
+        description: ""
+        id: pair_9b20802ddd6340f0aea98c5c92de6191
+        disabled: false
+      - name: limit
+        value: "5"
+        description: ""
+        id: pair_4a3becb0841b4b97b8194c4a3df8fa3c
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618865.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_b20a9dba9e4f4fdd8aee99be574f081a
+    parentId: fld_7941e485e47b4fdd875175a68f0a043a
+    modified: 1621195095078
+    created: 1621194858788
+    url: "{{ _.base_url }}/admins/1"
+    name: Update Admin
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Vinícius Lourenço Claro Cardoso",
+        	"email": "vinicius.cardoso23@etec.sp.gov.br",
+        	"phoneNumber": "15988116144"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_814ac7f63d9e4a7786411291eecf1e09
+    parentId: fld_7941e485e47b4fdd875175a68f0a043a
+    modified: 1621195111089
+    created: 1621194858796
+    url: "{{ _.base_url }}/admins/1"
+    name: Get Admin
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618834
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_106a73d8291d4c2293a1d5bcfa6fa490
+    parentId: fld_1c752b57b75b493b8b49dd124d819a84
+    modified: 1621814108426
+    created: 1621812850479
+    url: "{{ _.base_url }}/attendees/1"
+    name: Delete Attendee
+    description: ""
+    method: DELETE
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618884
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_1c752b57b75b493b8b49dd124d819a84
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1621812850468
+    created: 1621812850468
+    name: Attende
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1618720732911.25
+    _type: request_group
+  - _id: req_de4692d368b14bdf9fcf76146259ac4f
+    parentId: fld_1c752b57b75b493b8b49dd124d819a84
+    modified: 1621814112406
+    created: 1621812850475
+    url: "{{ _.base_url }}/attendees"
+    name: Create Attendee
+    description: ""
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Vinícius Lourenço",
+        	"email": "vinicius.cardoso@facens.br",
+        	"phoneNumber": "15988116120"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618871.5
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_f68b115bf40c420b91df8e2a205978c1
+    parentId: fld_1c752b57b75b493b8b49dd124d819a84
+    modified: 1621813307168
+    created: 1621812850471
+    url: "{{ _.base_url }}/attendes"
+    name: List Attendes
+    description: ""
+    method: GET
+    body: {}
+    parameters:
+      - name: page
+        value: "0"
+        description: ""
+        id: pair_9b20802ddd6340f0aea98c5c92de6191
+        disabled: false
+      - name: limit
+        value: "5"
+        description: ""
+        id: pair_4a3becb0841b4b97b8194c4a3df8fa3c
+        disabled: false
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618865.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_858536e8a5f64109839e853c6c54371d
+    parentId: fld_1c752b57b75b493b8b49dd124d819a84
+    modified: 1621812850477
+    created: 1621812850477
+    url: "{{ _.base_url }}/admins/1"
+    name: Update Admin
+    description: ""
+    method: PUT
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "Vinícius Lourenço Claro Cardoso",
+        	"email": "vinicius.cardoso23@etec.sp.gov.br",
+        	"phoneNumber": "15988116144"
+        }
+    parameters: []
+    headers:
+      - name: Content-Type
+        value: application/json
+        id: pair_88f504e24602472c91b4ba68ed1d7ada
+    authentication: {}
+    metaSortKey: -1616272618859
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_a3aacc81c47b4bc5adb65d1af7639962
+    parentId: fld_1c752b57b75b493b8b49dd124d819a84
+    modified: 1621812850482
+    created: 1621812850482
+    url: "{{ _.base_url }}/admins/1"
+    name: Get Admin
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers: []
+    authentication: {}
+    metaSortKey: -1616272618834
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: env_e9d1609852500037620748096dcbd638410d65ac
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1616257997952
+    created: 1616257980788
+    name: Base Environment
+    data:
+      base_url: http://localhost:3000
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1616257980788
+    _type: environment
+  - _id: jar_e9d1609852500037620748096dcbd638410d65ac
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1616257980791
+    created: 1616257980791
+    name: Default Jar
+    cookies: []
+    _type: cookie_jar
+  - _id: spc_83dd86cbb803411289f54440e76cf9df
+    parentId: wrk_eeddbdace318477bb5140b3b793cc536
+    modified: 1616257980565
+    created: 1616257980565
+    fileName: POO2 - AC1
+    contents: ""
+    contentType: yaml
+    _type: api_spec
+  - _id: env_2d78681e2e7145069df78a6ac8ce0c27
+    parentId: env_e9d1609852500037620748096dcbd638410d65ac
+    modified: 1616258013894
+    created: 1616257999432
+    name: LOCAL
+    data:
+      base_url: http://localhost:8080
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1616257999432
+    _type: environment
+  - _id: env_1cab656b0ce6409d9fea97931e4bebce
+    parentId: env_e9d1609852500037620748096dcbd638410d65ac
+    modified: 1616273091978
+    created: 1616273082992
+    name: Heroku
+    data:
+      base_url: https://facens-ac1-poo-2.herokuapp.com
+    dataPropertyOrder:
+      "&":
+        - base_url
+    color: null
+    isPrivate: false
+    metaSortKey: 1616273082992
+    _type: environment
