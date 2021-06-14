@@ -55,7 +55,7 @@ public class AttendeController {
 
   @GetMapping("{attendeId}")
   public ResponseEntity<AttendeDTO> getAttendees(@PathVariable Long attendeId) {
-    return ResponseEntity.ok(service.getAttendees(attendeId));
+    return ResponseEntity.ok(service.getAttendee(attendeId));
   }
 
   @PutMapping("{attendeId}")

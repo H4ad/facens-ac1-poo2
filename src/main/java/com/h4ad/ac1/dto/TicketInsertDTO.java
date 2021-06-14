@@ -1,0 +1,24 @@
+package com.h4ad.ac1.dto;
+
+public class TicketInsertDTO {
+
+  private Long attendeId;
+
+  private TicketType type;
+
+  public Long getAttendeId() {
+    return attendeId;
+  }
+
+  public void setAttendeId(Long attendeId) {
+    this.attendeId = attendeId;
+  }
+
+  public TicketType getType() {
+    return type;
+  }
+
+  public void setType(TicketType type) {
+    this.type = type;
+  }
+}

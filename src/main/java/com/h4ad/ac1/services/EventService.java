@@ -33,6 +33,10 @@ public class EventService {
   @Autowired
   private AdminService adminService;
 
+  public EventRepository getRepository() {
+    return repository;
+  }
+  
   public Page<Event> getEvents(
     Optional<String> pageString, 
     Optional<String> limitString,
@@ -71,10 +75,12 @@ public class EventService {
   }
 
   public EventDTO getEvent(Long eventId) {
-    Event entity = repository.findById(eventId).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O evento com essa identificação não foi encontrado."));
+    return new EventDTO(getEventEntity(eventId));
+  }
 
-    return new EventDTO(entity);
+  public Event getEventEntity(Long eventId) {
+    return repository.findById(eventId).orElseThrow(
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O evento com essa identificação não foi encontrado."));
   }
 
   public EventDTO createEvent(EventInsertDTO dto) {

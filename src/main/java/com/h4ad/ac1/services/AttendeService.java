@@ -24,6 +24,10 @@ public class AttendeService {
   @Autowired
   private AttendeRepository repository;
 
+  public AttendeRepository getRepository() {
+    return repository;
+  }
+
   public Page<Attende> getAttendees(Optional<String> pageString, Optional<String> limitString) {
     int page = Math.max(Integer.parseInt(pageString.orElse("0")), 0);
     int limit = Math.min(Math.max(Integer.parseInt(limitString.orElse("5")), 5), 2000);
@@ -31,17 +35,19 @@ public class AttendeService {
     return repository.findAll(PageRequest.of(page, limit));
   }
 
-  public AttendeDTO getAttendees(Long attendeId) {
-    Attende entity = repository.findById(attendeId).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Convidado com essa identificação não foi encontrado."));
-    
-    return new AttendeDTO(entity);
+  public AttendeDTO getAttendee(Long attendeId) {
+    return new AttendeDTO(getAttendeeEntity(attendeId));
+  }
+
+  public Attende getAttendeeEntity(Long attendeId) {
+    return repository.findById(attendeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+        "O Convidado com essa identificação não foi encontrado."));
   }
 
   public Attende getAttendeesEntity(Long attendeId) {
-    Attende entity = repository.findById(attendeId).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Convidado com essa identificação não foi encontrado."));
-    
+    Attende entity = repository.findById(attendeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+        "O Convidado com essa identificação não foi encontrado."));
+
     return entity;
   }
 
@@ -59,8 +65,8 @@ public class AttendeService {
   }
 
   public AttendeDTO updateAttendees(Long attendeId, AttendeUpdateDTO dto) {
-    Attende entity = repository.findById(attendeId).orElseThrow(
-        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O convidado com essa identificação não foi encontrado."));
+    Attende entity = repository.findById(attendeId).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
+        "O convidado com essa identificação não foi encontrado."));
 
     Attende attendeWithThatEmail = repository.findByEmail(dto.getEmail());
 
@@ -87,7 +93,7 @@ public class AttendeService {
     List<AttendeDTO> listDTO = new ArrayList<>();
 
     for (Attende Admin : list) {
-        AttendeDTO dto = new AttendeDTO(Admin, true);
+      AttendeDTO dto = new AttendeDTO(Admin, true);
 
       listDTO.add(dto);
     }
