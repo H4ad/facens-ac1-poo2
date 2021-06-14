@@ -18,6 +18,8 @@ Se você possuir o Insomnia, e quiser testar por ele, baixe o arquivo [insomnia.
 
 Há as seguintes rotas:
 
+## Events
+
 - Get: /events
   - Busca todos os eventos, você pode passar os Query Params como `page` e `limit` para fazer paginação e seus detalhes são retornados nos `Headers`, e Query Params como `name`, `description`, `emailContact` ou `startDate` para filtrar os resultados ou fazer uma pesquisa.
   - Exemplo: /events?page=0&limit=1&name=Vinicius
@@ -70,6 +72,8 @@ Há as seguintes rotas:
 - Delete: /events/{eventId}
   - Remove um evento pelo seu ID.
 
+## Admins
+
 - POST: /admins
   - Cria um admin.
 
@@ -100,6 +104,8 @@ Há as seguintes rotas:
 
 - DELETE: /admins/{adminId}
   - Remove um admin.
+
+## Attendees
 
 - POST: /attendees
   - Cria um participante.
@@ -137,6 +143,8 @@ Há as seguintes rotas:
 }
 ```
 
+## Places
+
 - POST: /places
   - Cria um lugar.
 
@@ -167,11 +175,38 @@ Há as seguintes rotas:
 - DELETE: /places/{placeId}
   - Remove um lugar.
 
+## events/{eventId}/places
+
 - POST: /events/1/places/1
   - Adiciona um lugar a um evento.
 
 - DELETE: /events/1/places/1
   - Remove um lugar a um evento.
+
+## events/{eventId}/tickets
+  
+- GET: /events/{eventId}/tickets
+  - Busca os Tickets de um evento.
+  
+- POST: /events/{eventId}/tickets
+  - Adiciona ticket vendido.
+  - Separação feita entre tickets pagos e gratuitos através do campo "type", onde 0 é gratuito e 1 é pago.
+
+```json
+{
+	"attendeId": 5,
+	"type": 1
+}
+```
+- DEL: /events/{eventId}/tickets
+  - Remove ticket vendido.
+  - Separação feita entre tickets pagos e gratuitos através do campo "type", onde 0 é gratuito e 1 é pago.
+```json
+{
+	"attendeId": 5,
+	"type": 0
+}
+```
 
 ## Desenvolvedores
 
