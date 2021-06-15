@@ -18,6 +18,8 @@ Se você possuir o Insomnia, e quiser testar por ele, baixe o arquivo [insomnia.
 
 Há as seguintes rotas:
 
+## Events
+
 - Get: /events
   - Busca todos os eventos, você pode passar os Query Params como `page` e `limit` para fazer paginação e seus detalhes são retornados nos `Headers`, e Query Params como `name`, `description`, `emailContact` ou `startDate` para filtrar os resultados ou fazer uma pesquisa.
   - Exemplo: /events?page=0&limit=1&name=Vinicius
@@ -70,6 +72,8 @@ Há as seguintes rotas:
 - Delete: /events/{eventId}
   - Remove um evento pelo seu ID.
 
+## Admins
+
 - POST: /admins
   - Cria um admin.
 
@@ -100,6 +104,8 @@ Há as seguintes rotas:
 
 - DELETE: /admins/{adminId}
   - Remove um admin.
+
+## Attendees
 
 - POST: /attendees
   - Cria um participante.
@@ -137,9 +143,10 @@ Há as seguintes rotas:
 }
 ```
 
+## Places
+
 - POST: /places
   - Cria um lugar.
-
 
 ```json
 {
@@ -167,35 +174,40 @@ Há as seguintes rotas:
 - DELETE: /places/{placeId}
   - Remove um lugar.
 
-### Rotas da AF
+## events/{eventId}/places
 
-- POST: /events/1/places/1
+- POST: /events/{eventId}/places/{placeId}
   - Adiciona um lugar a um evento.
 
-- DELETE: /events/1/places/1
+- DELETE: /events/{eventId}/places/{placeId}
   - Remove um lugar a um evento.
 
-- POST: /events/1/tickets
-  - Vende um ingresso para um attendee. `type=0` representa ingressos gratuitos, e `type=1` representa ingressos pagos.
+## events/{eventId}/tickets
+  
+- GET: /events/{eventId}/tickets
+  - Busca os Tickets de um evento.
+  
+- POST: /events/{eventId}/tickets
+  - Vende um ticket para um attendee.
+  - Separação feita entre tickets pagos e gratuitos através do campo "type", onde 0 é gratuito e 1 é pago.
 
 ```json
 {
-	"attendeId": 1,
-	"type": 0
+	"attendeId": 5,
+	"type": 1
 }
+```
 
-- DELETE: /events/1/tickets
-  - Devolve um ingresso para um attendee. `type=0` representa ingressos gratuitos, e `type=1` representa ingressos pagos.
-  - Ao devolver, caso o ingresso seja pago, é retornado o preço pago para a propriedade `balance`.
+- DEL: /events/{eventId}/tickets
+  - Remove ticket vendido.
+  - Separação feita entre tickets pagos e gratuitos através do campo "type", onde 0 é gratuito e 1 é pago.
 
 ```json
 {
-	"attendeId": 1,
+	"attendeId": 5,
 	"type": 0
 }
-
-- GET: /events/1/tickets
-  - Retorna as informações de um evento junto de todos os ingressos vendidos para aquele evento.
+```
 
 ## Desenvolvedores
 
