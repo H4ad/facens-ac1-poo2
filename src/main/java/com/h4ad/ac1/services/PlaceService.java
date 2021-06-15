@@ -7,6 +7,7 @@ import java.util.Optional;
 import com.h4ad.ac1.dto.PlaceDTO;
 import com.h4ad.ac1.dto.PlaceInsertDTO;
 import com.h4ad.ac1.dto.PlaceUpdateDTO;
+import com.h4ad.ac1.entities.Event;
 import com.h4ad.ac1.entities.Place;
 import com.h4ad.ac1.repositories.PlaceRepository;
 
@@ -23,6 +24,9 @@ public class PlaceService {
 
   @Autowired
   private PlaceRepository repository;
+
+  @Autowired
+  private EventPlaceService eventPlaceService;
 
   public Page<Place> getPlaces(Optional<String> pageString, Optional<String> limitString) {
     int page = Math.max(Integer.parseInt(pageString.orElse("0")), 0);
@@ -59,6 +63,14 @@ public class PlaceService {
   }
 
   public void deletePlace(Long placeId) {
+    Place entity = repository.findById(placeId).orElseThrow(
+        () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Lugar com essa identificação não foi encontrado."));
+
+    List<Event> events = entity.getEvents();
+
+    if (events.size() > 0)
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode remover esse lugar porque ele já está associado com algum evento.");
+
     try {
       repository.deleteById(placeId);
     } catch (EmptyResultDataAccessException ex) {

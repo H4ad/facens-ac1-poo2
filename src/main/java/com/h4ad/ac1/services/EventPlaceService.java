@@ -1,5 +1,7 @@
 package com.h4ad.ac1.services;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import com.h4ad.ac1.entities.Event;
@@ -55,6 +57,9 @@ public class EventPlaceService {
     Event event = eventRepository.findById(eventId).orElseThrow(
         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O Evento com essa identificação não foi encontrado."));
 
+    if (LocalDate.now().isAfter(event.getStartDate()) || (LocalDate.now().equals(event.getStartDate()) && LocalTime.now().isAfter(event.getStartTime())))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode remover esse lugar desse evento porque ele já ocorreu.");
+  
     List<Place> places = event.getPlaces();
 
     boolean placeWasRemoved = places.removeIf(place -> place.getId() == placeId);

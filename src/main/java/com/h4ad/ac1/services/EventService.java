@@ -1,6 +1,7 @@
 package com.h4ad.ac1.services;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -103,6 +104,9 @@ public class EventService {
   public EventDTO updateEvent(Long eventId, EventUpdateDTO dto) {
     Event entity = repository.findById(eventId).orElseThrow(
         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "O evento com essa identificação não foi encontrado."));
+
+    if (LocalDate.now().isAfter(entity.getStartDate()) || (LocalDate.now().equals(entity.getStartDate()) && LocalTime.now().isAfter(entity.getStartTime())))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode atualizar as informações de um evento que já ocorreu.");
 
     entity.setName(dto.getName());
     entity.setDescription(dto.getDescription());

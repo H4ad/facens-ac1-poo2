@@ -153,10 +153,10 @@ INSERT INTO public.tb_event (
 VALUES(
     'Será um evento legal para caramba.',
     'vinicius.cardoso23@etec.sp.gov.br',
-    '2021-03-22',
+    '2021-07-22',
     '15:00:00',
     'Evento do Joga11',
-    '2021-03-20',
+    '2021-07-20',
     '13:00:00',
     5,
     95,
@@ -201,3 +201,5 @@ INSERT INTO public.tb_places_events (event_id,place_id)
 	VALUES (1,1);
 INSERT INTO public.tb_places_events (event_id,place_id)
 	VALUES (2,2);
+INSERT INTO public.tb_places_events (event_id,place_id)
+	VALUES (3,2);
