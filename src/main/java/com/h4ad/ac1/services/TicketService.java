@@ -3,6 +3,7 @@ package com.h4ad.ac1.services;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.List;
 
 import com.h4ad.ac1.dto.EventDTO;
 import com.h4ad.ac1.dto.TicketInsertDTO;
@@ -30,11 +31,6 @@ public class TicketService {
   private TicketRepository repository;
 
   public void sellTicket(Long eventId, TicketInsertDTO dto) {
-    Ticket selledTicket = repository.findByAttendeIdAndEventId(dto.getAttendeId(), eventId);
-
-    if (selledTicket != null)
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode vender mais de um ingresso para a mesma pessoa.");
-
     Event event = eventService.getEventEntity(eventId);
     Attende attende = attendeService.getAttendeeEntity(dto.getAttendeId());
 
@@ -79,10 +75,12 @@ public class TicketService {
   }
 
   public void removeTicket(Long eventId, TicketInsertDTO dto) {
-    Ticket ticket = repository.findByAttendeIdAndEventId(dto.getAttendeId(), eventId);
+    List<Ticket> tickets = repository.findByAttendeIdAndEventId(dto.getAttendeId(), eventId);
 
-    if (ticket == null)
+    if (tickets.size() == 0)
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi encontrado nenhum ingresso para esse usuário para esse evento.");
+
+    Ticket ticket = tickets.get(0);
 
     Event event = ticket.getEvent();
     Attende attende = ticket.getAttende();

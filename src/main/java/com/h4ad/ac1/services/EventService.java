@@ -11,6 +11,7 @@ import com.h4ad.ac1.dto.EventInsertDTO;
 import com.h4ad.ac1.dto.EventUpdateDTO;
 import com.h4ad.ac1.entities.Admin;
 import com.h4ad.ac1.entities.Event;
+import com.h4ad.ac1.entities.Ticket;
 import com.h4ad.ac1.repositories.EventRepository;
 import com.h4ad.ac1.specifications.EventSearchCriteria;
 import com.h4ad.ac1.specifications.EventSpecification;
@@ -134,6 +135,13 @@ public class EventService {
   }
 
   public void deleteEvent(Long eventId) {
+    Event event = getEventEntity(eventId);
+
+    List<Ticket> tickets = event.getTickets();
+
+    if (tickets.size() > 0)
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O evento não pode ser removido porque já foram vendidos um ou mais ingressos para esse evento.");
+
     try {
       repository.deleteById(eventId);
     } catch (EmptyResultDataAccessException ex) {
