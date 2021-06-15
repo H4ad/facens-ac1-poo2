@@ -167,11 +167,35 @@ Há as seguintes rotas:
 - DELETE: /places/{placeId}
   - Remove um lugar.
 
+### Rotas da AF
+
 - POST: /events/1/places/1
   - Adiciona um lugar a um evento.
 
 - DELETE: /events/1/places/1
   - Remove um lugar a um evento.
+
+- POST: /events/1/tickets
+  - Vende um ingresso para um attendee. `type=0` representa ingressos gratuitos, e `type=1` representa ingressos pagos.
+
+```json
+{
+	"attendeId": 1,
+	"type": 0
+}
+
+- DELETE: /events/1/tickets
+  - Devolve um ingresso para um attendee. `type=0` representa ingressos gratuitos, e `type=1` representa ingressos pagos.
+  - Ao devolver, caso o ingresso seja pago, é retornado o preço pago para a propriedade `balance`.
+
+```json
+{
+	"attendeId": 1,
+	"type": 0
+}
+
+- GET: /events/1/tickets
+  - Retorna as informações de um evento junto de todos os ingressos vendidos para aquele evento.
 
 ## Desenvolvedores
 
