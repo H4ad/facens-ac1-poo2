@@ -1,5 +1,9 @@
 package com.h4ad.ac1.services;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 import com.h4ad.ac1.dto.EventDTO;
 import com.h4ad.ac1.dto.TicketInsertDTO;
 import com.h4ad.ac1.dto.TicketType;
@@ -36,6 +40,9 @@ public class TicketService {
 
     Ticket ticket = new Ticket(dto);
 
+    if (event.getEndDate().isBefore(LocalDate.now()) || (event.getEndDate().equals(LocalDate.now()) && event.getEndTime().isBefore(LocalTime.now())))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode comprar um ingresso para um evento que ocorreu no passado.");
+
     if (dto.getType() == TicketType.FREE) {
       Long amountFreeTickets = event.getAmountFreeTickets();
       Long freeTicketsSelled = event.getFreeTicketsSelled();
@@ -55,6 +62,8 @@ public class TicketService {
             "Não há mais ingressos pagos disponíveis para esse evento para ser vendido.");
 
       ticket.setPrice(event.getPriceTicket());
+      attende.setBalance(attende.getBalance() - event.getPriceTicket());
+
       event.setPayedTicketsSelled(paidTicketsSelled + 1);
     } else {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não há como vender esse tipo de ingresso.");
@@ -77,6 +86,9 @@ public class TicketService {
 
     Event event = ticket.getEvent();
     Attende attende = ticket.getAttende();
+
+    if (LocalDate.now().isAfter(event.getStartDate()) || (LocalDate.now().equals(event.getStartDate()) && LocalTime.now().isAfter(event.getStartTime())))
+      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Você não pode vender um ingresso de um evento que já ocorreu ou está ocorrendo agora.");
 
     if (ticket.getType() == TicketType.FREE) {
       Long freeTicketsSelled = event.getFreeTicketsSelled();
