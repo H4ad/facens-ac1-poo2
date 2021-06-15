@@ -193,8 +193,8 @@ Há as seguintes rotas:
 
 ```json
 {
-	"attendeId": 5,
-	"type": 1
+  "attendeId": 5,
+  "type": 1
 }
 ```
 
@@ -204,8 +204,8 @@ Há as seguintes rotas:
 
 ```json
 {
-	"attendeId": 5,
-	"type": 0
+  "attendeId": 5,
+  "type": 0
 }
 ```
 
